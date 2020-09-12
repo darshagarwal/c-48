@@ -4,13 +4,13 @@ class Paddle{
         this.y = y;
         this.width = width;
         this.height = height;
-        this.paddle = createSprite(this.x,this.y,this.width,this.height);
+        this.body = createSprite(this.x,this.y,this.width,this.height);
         this.image = loadImage("Images/paddle.png");
     }
 
     display(){
        // imageMode(CENTER);
-        this.paddle.addImage(this.image);
-        this.paddle.scale = 0.2;
+        this.body.addImage(this.image);
+        this.body.scale = 0.2;
     }
 }

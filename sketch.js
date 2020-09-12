@@ -92,33 +92,36 @@ function draw() {
 	ball.bounceOff(edges[0]);
 	ball.bounceOff(edges[1]);
 	ball.bounceOff(edges[2]);
-	ball.bounceOff(paddle.paddle);
+	//ball.bounceOff(paddle.body);
     
     for(var temp in bubble){
 		if(ball.bounceOff(bubble[temp].bubble)){
 			console.log("hi");
-			score += 5;
+			score += 10;
 		}
 	}
 
-	if(ball.bounceOff(paddle.paddle)){
-	   ball.changeImage(ballArr[Math.round(random(0,9))]);
+	//console.log(ball.collide(paddle.body))
+	if(ball.bounceOff(paddle.body)){
+		ball.addImage(ballArr[Math.round(random(0,9))]);
 	   ball.scale = 0.7;
+	  // ball.velocityX = 0;
+	  // ball.velocityY = 0;
+	   ball.x = paddle.body.x
 	}
-
+	//	console
 	if(keyDown("right")){
-		this.paddle.paddle.x += 10;
+		this.paddle.body.x += 10;
 	}
 
 	if(keyDown("left")){
-		this.paddle.paddle.x -= 10;
+		this.paddle.body.x -= 10;
 	}
 
 	if(score >= 100){
 	if(keyDown("m")){
 		ball.addImage(megaBallImg);
 		ball.scale = 0.075;
-
 	}
    }else if(score !== 100){
 	   if(keyDown("m")){
@@ -132,16 +135,16 @@ function draw() {
 	   text("GAME OVER!!",350,700)
    }
 
-   if(score === 100){
+   if(score >= 100){
 	ghost.velocityX = -3;
    }
    
    
-   if(ghost.x === 100){
+  /* if(ghost.bounceOff(edges[1])){
 	ghost.addImage(ghostRightImg);
 	ghost.velocityX = +20;
 	console.log(ghost.velocityX);
-   }
+   }*/
 
 
  if(ball.bounceOff(ghost)){
@@ -149,6 +152,11 @@ function draw() {
 	ball.addImage(ballArr[Math.round(random(0,9))]);
 	score += 100;
 	//console.log(ballArr[Math.round(random(0,9))]);
+ }
+
+ //to distroy balls
+ if(ball.addImage(ballArr[Math.round(random(0,9))])=== bubble[temp].bubble.addImage(ballArr[Math.round(random(0,9))])){
+	bubble[temp].bubble.distroy();
  }
 
 	textSize(40);
