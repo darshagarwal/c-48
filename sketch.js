@@ -149,15 +149,19 @@ function draw() {
 
  if(ball.bounceOff(ghost)){
 	ghost.addImage(deadGhost);
-	ball.addImage(ballArr[Math.round(random(0,9))]);
+	//ball.addImage(ballArr[Math.round(random(0,9))]);
 	score += 100;
 	//console.log(ballArr[Math.round(random(0,9))]);
  }
 
  //to distroy balls
- if(ball.addImage(ballArr[Math.round(random(0,9))])=== bubble[temp].bubble.addImage(ballArr[Math.round(random(0,9))])){
-	bubble[temp].bubble.distroy();
- }
+ /*if(ball.addImage(ballArr[Math.round(random(0,9))])=== bubble[temp].bubble.addImage(ballArr[Math.round(random(0,9))])){
+	bubble[temp].bubble.destroy();
+ }*/
+
+ /*	if(ball.isTouching(bubble[temp])){
+		 bubble[temp].destroy();
+	 }*/
 
 	textSize(40);
 	text("Score" + score,50   ,50);
